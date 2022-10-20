@@ -19,9 +19,10 @@ class Main {
 
         HttpResponse<String> response = client.send(request,
                 HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
         ParseJSON(response.body());
     }
-        public static void ParseJSON(String list) {
+    public static void ParseJSON(String list) {
             JSONObject obj = new JSONObject(list);
             List<Pokemon> listPokemon = new ArrayList<Pokemon>();
             JSONArray arr = obj.getJSONArray("results");
@@ -32,6 +33,7 @@ class Main {
                 allPokemon.url = arr.getJSONObject(i).getString("url");
                 listPokemon.add(allPokemon);
             }
-        }
+            System.out.println(listPokemon);
+    }
 }
 
